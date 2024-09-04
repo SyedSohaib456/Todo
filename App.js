@@ -5,6 +5,7 @@ import {
   TextInput,
   View,
   FlatList,
+  Pressable,
 } from "react-native";
 import { useState } from "react";
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -21,7 +22,9 @@ export default function App() {
         ...spreadList,
         { text: goalText, key: Math.random().toString() },
       ]);
+      setGoalText(""); 
     } else alert("Enter Task!");
+    
   };
 
   const removeTask = (index) => {
@@ -45,6 +48,7 @@ export default function App() {
           placeholder="Enter your tasks..."
           placeholderTextColor="gray"
           onChangeText={textInputHandler}
+          value={goalText}
         />
         <Button title="Add Task" onPress={btnAddHandler} />
       </View>
@@ -121,7 +125,7 @@ const styles = StyleSheet.create({
     color: "white",
     width: "100%",
     padding: 8,
-    borderRadius: 0,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: "#1E2A5E",
     justifyContent: "space-between",
